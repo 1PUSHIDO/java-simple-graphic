@@ -8,12 +8,19 @@ package jframesource;
  *
  * @author user
  */
-public class Integral {
-    private double result = 0.0;
+public class RecIntegral {
+    private double result = 0.0, low = 0.0, high = 0.0, step = 0.0;
     
-    public Integral() { }
+    public RecIntegral() { }
+    
+    public RecIntegral(double low, double high, double step) {
+        this.low = low;
+        this.high = high;
+        this.step = step;
+        this.result = 0.0;
+    }
    
-    public double GetResult(double low, double high, double step) {
+    public double CalculateResult() {
         result = 0.0;
         
         for (double x = low; x < high; x += step)
