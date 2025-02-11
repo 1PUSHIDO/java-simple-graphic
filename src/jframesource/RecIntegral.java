@@ -13,11 +13,19 @@ public class RecIntegral {
     
     public RecIntegral() { }
     
-    public RecIntegral(double low, double high, double step) {
-        this.low = low;
-        this.high = high;
-        this.step = step;
-        this.result = 0.0;
+    public RecIntegral(double low, double high, double step) throws NewException {
+        // Проверка на вхождение в разрешенный диапазон
+        if (low >= 0.000001 && low <= 1000000 ||
+                high >= 0.000001 && high <= 1000000 ||
+                step >= 0.000001 && low <= 1000000) {
+            this.low = low;
+            this.high = high;
+            this.step = step;
+            this.result = 0.0;
+        }
+        else
+            // Исключение
+            throw new NewException("Одно из чисел находится вне разрешенного диапазона [0.000001;1000000]");
     }
    
     public double CalculateResult() {

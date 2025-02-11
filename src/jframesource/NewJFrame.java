@@ -334,14 +334,29 @@ public class NewJFrame extends javax.swing.JFrame {
         temp = jTextField3.getText();
         if (temp.isEmpty()) return;
         double step = Double.parseDouble(temp);
-
+        
+        jTextField1.setText("");
+        jTextField2.setText("");
+        jTextField3.setText("");
+        
         if (low >= high || step >= high || step <= 0.0) {
             return;
         }
-
+        
+        // Класс
+        RecIntegral info;
+        
+        // Получение возможного исключения
+        try {
+            // Добавление записи в коллекцию
+            info = new RecIntegral(low, high, step);
+        } catch (NewException exception) {
+            return;
+        }
+        
+        // Запись
+        data.add(info);
         model.addRow(new Object[] {low, high, step, 0});
-        // Добавление записи в коллекцию
-        data.add(new RecIntegral(low, high, step));
     }//GEN-LAST:event_jButton1MouseClicked
 
     private void jButton5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton5MouseClicked
